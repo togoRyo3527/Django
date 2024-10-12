@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>問題一覧</title>
+  </head>
+  <body>
+    <header>
+      <h1>生保講座</h1>
+    </header>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Index</th>
+          <th>Category</th>
+          <th>Freq</th>
+          <th>Question</th>
+          <th>Answer</th>
+          <th>Explanation</th>
+          <th>Reference</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for question in questions %}
+          <tr>
+            <td>{{ question.id }}</td>
+            <td>{{ question.index }}</td>
+            <td>{{ question.category }}</td>
+            <td>{{ question.freq }}</td>
+            <td>{{ question.question }}</td>
+            <td>{{ question.answer }}</td>
+            <td>{{ question.explanation }}</td> <!-- Typo fixed here -->
+            <td>{{ question.reference }}</td>
+            <td>
+              {% comment %} <a href="{% url 'life_ins:edit_post' post_id=question.id %}">修正</a> <!-- Corrected variable here -->
+              <a href="{% url 'life_ins:delete_post' post_id=question.id %}">削除</a> <!-- Corrected variable here --> {% endcomment %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% comment %} <a href="{% url 'life_ins:create_post' %}">作成</a> {% endcomment %}
+  </body>
+</html>
